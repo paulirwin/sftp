@@ -35,7 +35,7 @@ jobs:
     uses: ./.github/workflows/build-image.yml
     with:
       containerfile: Dockerfile-alpine
-      image: "$GITHUB_REPOSITORY"
+      image: ${{ github.repository }}
       tag: alpine
       update-check: "apk update >/dev/null && apk list --upgradable"
     secrets: inherit
@@ -45,7 +45,7 @@ jobs:
     uses: ./.github/workflows/build-image.yml
     with:
       containerfile: Dockerfile
-      image: "$GITHUB_REPOSITORY"
+      image: ${{ github.repository }}
       tag: debian
       update-check: "apt-get update >/dev/null && apt-get upgrade -s | grep '^Inst' || true"
     secrets: inherit
